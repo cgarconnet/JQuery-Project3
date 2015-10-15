@@ -10,10 +10,17 @@ $(document).ready(function () {
 
 // Now let's save the reference of our input value
 
-	var item = $("#todo-list-item").val();
-
 //	Var xx is local variable
 //	xx = will be a global variable
+	var item = $("#todo-list-item").val();
+
+
+
+// Manipulating DOM Elements
+
+	$("#list-items").append("<li><input type='checkbox'/>" + item + "<a class='remove'>x</a></li><hr>");
+
+	$("#todo-list-item").val("");
 
     });
 });
