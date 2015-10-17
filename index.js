@@ -4,23 +4,36 @@ $(document).ready(function () {
     // $(".xxx") for a Class
     $(".add-items").submit(function(event){
 
-	event.preventDefault(); // submit will submit the form and load again the page, this is why without this code, the Hi will only falsh and desiappear because a new page is loaded
-//    	alert('cool');
-//	console.log($("#todo-list-item").val());
+		event.preventDefault(); // submit will submit the form and load again the page, this is why without this code, the Hi will only falsh and desiappear because a new page is loaded
+	//    	alert('cool');
+	//	console.log($("#todo-list-item").val());
 
-// Now let's save the reference of our input value
+	// Now let's save the reference of our input value
 
-//	Var xx is local variable
-//	xx = will be a global variable
-	var item = $("#todo-list-item").val();
+	//	Var xx is local variable
+	//	xx = will be a global variable
+		var item = $("#todo-list-item").val();
 
 
+		if (item) {
+		// Manipulating DOM Elements
 
-// Manipulating DOM Elements
-
-	$("#list-items").append("<li><input type='checkbox'/>" + item + "<a class='remove'>x</a></li><hr>");
-
-	$("#todo-list-item").val("");
+			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a></li><hr>");
+			$("#todo-list-item").val("");
+		}
 
     });
+		// Listenning for Change is much safer than listening for click
+
+// This checkbox do not exist yet, because added later
+		// $(".checkbox").change(function(){
+		// 		console.log("checkbox checked")
+		// })
+// we target the dynamically created checkbox
+		$(document).on("change", ".checkbox", function(){
+			//
+			console.log("checkbox checked")
+
+		})
+
 });
