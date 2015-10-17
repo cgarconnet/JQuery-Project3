@@ -2,6 +2,13 @@ $(document).ready(function () {
     // YOUR CODE HERE!
     // $("#xxx") for a Id
     // $(".xxx") for a Class
+
+    // Before we load what's in LocalStorage
+    // Then we show them on the page
+	$("#list-items").html(localStorage.getItem("list-items"));
+
+
+
     $(".add-items").submit(function(event){
 
 		event.preventDefault(); // submit will submit the form and load again the page, this is why without this code, the Hi will only falsh and desiappear because a new page is loaded
@@ -18,8 +25,15 @@ $(document).ready(function () {
 		if (item) {
 		// Manipulating DOM Elements
 
+			// Now let's save it local storage
+
+
 			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
+
+			//Now we can save the updated list in LocalStorage
+			localStorage.setItem("list-items", $("#list-items").html());	
 			$("#todo-list-item").val("");
+
 		}
 
     });
@@ -35,6 +49,9 @@ $(document).ready(function () {
 			// this is the checkbox as input. So it's parent is required to be checked
 			// completed css will put a line-through as text-decoration
 			$(this).parent().toggleClass("completed");
+
+			//Now we can save the updated list in LocalStorage
+			localStorage.setItem("list-items", $("#list-items").html());	
 		});
 
 
@@ -43,6 +60,9 @@ $(document).ready(function () {
 			// this is the checkbox as input. So it's parent is required to be checked
 			// completed css will put a line-through as text-decoration
 			$(this).parent().remove();
+
+			//Now we can save the updated list in LocalStorage
+			localStorage.setItem("list-items", $("#list-items").html());	
 		});
 
 
