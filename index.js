@@ -18,7 +18,7 @@ $(document).ready(function () {
 		if (item) {
 		// Manipulating DOM Elements
 
-			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a></li><hr>");
+			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
 			$("#todo-list-item").val("");
 		}
 
@@ -31,9 +31,19 @@ $(document).ready(function () {
 		// })
 // we target the dynamically created checkbox
 		$(document).on("change", ".checkbox", function(){
-			//
-			console.log("checkbox checked")
+			//console.log("checkbox checked")
+			// this is the checkbox as input. So it's parent is required to be checked
+			// completed css will put a line-through as text-decoration
+			$(this).parent().toggleClass("completed");
+		});
 
-		})
+
+		$(document).on("click", ".remove", function(){
+			//console.log("checkbox checked")
+			// this is the checkbox as input. So it's parent is required to be checked
+			// completed css will put a line-through as text-decoration
+			$(this).parent().remove();
+		});
+
 
 });
