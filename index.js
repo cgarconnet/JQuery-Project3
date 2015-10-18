@@ -50,6 +50,12 @@ $(document).ready(function () {
 			// completed css will put a line-through as text-decoration
 			$(this).parent().toggleClass("completed");
 
+			// we also change the checked in the DOM, so we can save this value in LocalStorage 
+			if ($(this).attr("checked")) {
+				$(this).removeAttr("checked");
+			} else {
+				$(this).attr("checked","checked");
+			}
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items", $("#list-items").html());	
 		});
