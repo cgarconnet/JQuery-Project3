@@ -27,9 +27,13 @@ $(document).ready(function () {
 
 			// Now let's save it local storage
 
+			// IF item = dance show instead a gif
 
-			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
-
+			if (item == 'dance') {
+				$("#list-items").append("<li><input class='checkbox' type='checkbox'/><img src='assets/dance.gif'/><a class='remove'>x</a><hr></li>");
+			} else {
+				$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'>x</a><hr></li>");
+			}
 			//Now we can save the updated list in LocalStorage
 			localStorage.setItem("list-items", $("#list-items").html());	
 			$("#todo-list-item").val("");
@@ -65,11 +69,22 @@ $(document).ready(function () {
 			//console.log("checkbox checked")
 			// this is the checkbox as input. So it's parent is required to be checked
 			// completed css will put a line-through as text-decoration
-			$(this).parent().remove();
 
-			//Now we can save the updated list in LocalStorage
-			localStorage.setItem("list-items", $("#list-items").html());	
+/* v1
+			$(this).parent().remove(); // The remove will now be called in the call-back function
+			localStorage.setItem("list-items", $("#list-items").html());
+*/
+
+			$(this).parent().slideUp("slow", function(){
+// not required because already removed
+//				$(this).parent().remove();
+				//Now we can save the updated list in LocalStorage
+				localStorage.setItem("list-items", $("#list-items").html());
+// below command is to really remove the global localStorage
+//				localStorage.removeItem("list-items");	
+			});
+
+
 		});
-
 
 });
