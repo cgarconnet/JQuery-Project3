@@ -60,3 +60,11 @@ input[type="checkbox"] {
 .completed {
     text-decoration: line-through;
 }
+
+.ui-state-highlight {
+    height: 2em; line-height: 1.2em;
+    margin: 15px 0;
+    border: 1px solid #FCEFA1;
+    background: #FBF9EE repeat-x scroll 50% 50%;
+    color: #363636;
+}

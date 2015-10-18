@@ -1,3 +1,15 @@
+
+$(function() {
+    $( "#list-items" ).sortable({
+      placeholder: "ui-state-highlight",
+      stop: function (event, ui) {
+ 		localStorage.setItem("list-items", $("#list-items").html());
+      }
+    });
+    $( "#list-items" ).disableSelection();
+});
+
+
 $(document).ready(function () {
     // YOUR CODE HERE!
     // $("#xxx") for a Id
